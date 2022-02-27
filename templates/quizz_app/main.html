@@ -1,0 +1,38 @@
+{% extends 'quizz_app/base.html' %}
+{% load static %}
+{% block content %}
+<!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-body-confirm"></div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="start-button">Start</button>
+                </div>
+            </div>
+        </div>
+   </div>
+
+    <div class="card" style="width: 16rem;">
+        <div class="card-header" style="text-align: center;">Quizes</div>
+        <ul class="list-group list-group-flush" id="btns-list">
+        {% for quiz in quizes %}
+                <button type="button" 
+                        class="list-group-item modal-button" 
+                        data-bs-toggle="modal" 
+                        data-bs-target="#staticBackdrop"
+                        data-id="{{quiz.quiz_id}}"
+                        data-category="{{ quiz.category }}"
+                        data-questions="{{ quiz.number_of_questions }}"
+                        data-difficulty="{{ quiz.difficulty}}">
+                    {{ quiz.category }}
+                  </button>
+        {% endfor %}
+        </ul>
+    </div>
+    <script src="{% static 'quizz_app/main.js' %}"></script>
+{% endblock content %}

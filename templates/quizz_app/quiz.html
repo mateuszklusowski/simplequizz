@@ -1,0 +1,12 @@
+{% extends 'quizz_app/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="quiz-layout">
+        <div class="card" style="width: 32rem;">
+            <div id="question"></div>
+            <ul class="list-group list-group-flush" id="answer-buttons">
+            </ul>
+        </div>
+    </div>
+   <script src="{% static 'quizz_app/quiz.js' %}"></script>
+{% endblock content %}
